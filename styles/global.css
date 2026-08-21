@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background:
+        #080808;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Roboto",
+        sans-serif;
+
+    overflow-x:
+        hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}

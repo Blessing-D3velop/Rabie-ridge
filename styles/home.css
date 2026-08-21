@@ -1,0 +1,2276 @@
+.home {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 100svh;
+
+    min-height: 760px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    background: #050505;
+
+    isolation: isolate;
+
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.home-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -10;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
+
+.home-background-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center center;
+
+    opacity: 0;
+
+    filter:
+        brightness(0.58)
+        contrast(1.12)
+        saturate(0.72);
+
+    transform: scale(1.08);
+
+    animation:
+        homeImageReveal 1.5s
+        ease forwards,
+
+        homeImageMovement 18s
+        ease-in-out
+        1.5s
+        infinite alternate;
+
+}
+
+
+/* =========================================================
+   IMAGE REVEAL
+   ========================================================= */
+
+@keyframes homeImageReveal {
+
+    0% {
+
+        opacity: 0;
+
+        transform: scale(1.13);
+
+    }
+
+    100% {
+
+        opacity: 0.78;
+
+        transform: scale(1.08);
+
+    }
+
+}
+
+
+/* =========================================================
+   IMAGE MOVEMENT
+   ========================================================= */
+
+@keyframes homeImageMovement {
+
+    0% {
+
+        transform:
+            scale(1.08)
+            translate3d(0, 0, 0);
+
+    }
+
+    100% {
+
+        transform:
+            scale(1.13)
+            translate3d(-12px, -5px, 0);
+
+    }
+
+}
+
+
+/* =========================================================
+   DARK IMAGE OVERLAY
+   ========================================================= */
+
+.home-background-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(5, 5, 5, 0.97) 0%,
+            rgba(5, 5, 5, 0.91) 27%,
+            rgba(5, 5, 5, 0.63) 58%,
+            rgba(5, 5, 5, 0.72) 100%
+        ),
+
+        linear-gradient(
+            180deg,
+            rgba(5, 5, 5, 0.48) 0%,
+            transparent 35%,
+            rgba(5, 5, 5, 0.90) 100%
+        );
+
+}
+
+
+/* =========================================================
+   FUTURISTIC GRID
+   ========================================================= */
+
+.home-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    opacity: 0.11;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    mask-image:
+
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 25%,
+            black 75%,
+            transparent 100%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   RED GLOW
+   ========================================================= */
+
+.home-red-glow {
+
+    position: absolute;
+
+    width: 700px;
+
+    height: 700px;
+
+    right: -280px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(225, 6, 19, 0.24) 0%,
+            rgba(225, 6, 19, 0.10) 35%,
+            transparent 70%
+        );
+
+    filter: blur(12px);
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    animation:
+        homeGlow 5s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+@keyframes homeGlow {
+
+    0% {
+
+        opacity: 0.55;
+
+        transform:
+            translateY(-50%)
+            scale(0.95);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-50%)
+            scale(1.08);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOVING SCAN
+   ========================================================= */
+
+.home-scan-line {
+
+    position: absolute;
+
+    top: 0;
+
+    left: -30%;
+
+    width: 20%;
+
+    height: 100%;
+
+    z-index: 5;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 23, 36, 0.10),
+            transparent
+        );
+
+    transform: skewX(-18deg);
+
+    pointer-events: none;
+
+    animation:
+        homeScan 8s
+        linear
+        infinite;
+
+}
+
+
+@keyframes homeScan {
+
+    0% {
+
+        left: -30%;
+
+    }
+
+    42% {
+
+        left: 120%;
+
+    }
+
+    100% {
+
+        left: 120%;
+
+    }
+
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.home-container {
+
+    position: relative;
+
+    z-index: 20;
+
+    width:
+        min(
+            1440px,
+            calc(100% - 80px)
+        );
+
+    min-height: 100svh;
+
+    margin: 0 auto;
+
+    padding:
+        155px 0 145px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 70px;
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.home-content {
+
+    position: relative;
+
+    width: min(850px, 100%);
+
+    z-index: 5;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.home-eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 11px;
+
+    margin-bottom: 28px;
+
+    color: #999999;
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size: 0.58rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.19em;
+
+    opacity: 0;
+
+    animation:
+        homeFadeUp
+        0.8s
+        0.15s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+}
+
+
+.home-eyebrow-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    flex: 0 0 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--rr-red-bright);
+
+    box-shadow:
+
+        0 0 7px
+        rgba(255,23,36,0.9),
+
+        0 0 18px
+        rgba(225,6,19,0.45);
+
+    animation:
+        homeStatusPulse
+        1.7s
+        ease-in-out
+        infinite;
+
+}
+
+
+.home-eyebrow-divider {
+
+    width: 28px;
+
+    height: 1px;
+
+    background:
+        rgba(255,255,255,0.28);
+
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.home-title {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family:
+        var(--rr-display-font);
+
+    font-weight: 900;
+
+    line-height: 0.87;
+
+    letter-spacing: -0.045em;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    animation:
+        homeTitleReveal
+        1s
+        0.3s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+}
+
+
+/* =========================================================
+   TITLE LINE
+   ========================================================= */
+
+.home-title-line {
+
+    display: block;
+
+    color:
+        #ffffff;
+
+    font-size:
+        clamp(
+            3.7rem,
+            8.2vw,
+            7.8rem
+        );
+
+}
+
+
+/* =========================================================
+   RED TITLE
+   ========================================================= */
+
+.home-title-red {
+
+    position: relative;
+
+    color:
+        var(--rr-red-bright);
+
+    text-shadow:
+
+        0 0 15px
+        rgba(255,23,36,0.25),
+
+        0 0 45px
+        rgba(225,6,19,0.18);
+
+}
+
+
+/* =========================================================
+   RED TITLE DECORATION
+   ========================================================= */
+
+.home-title-red::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -5px;
+
+    width: 0;
+
+    height: 2px;
+
+    background:
+        var(--rr-red-bright);
+
+    box-shadow:
+
+        0 0 10px
+        rgba(255,23,36,0.9),
+
+        0 0 25px
+        rgba(225,6,19,0.55);
+
+    animation:
+        titleAccent
+        1s
+        1.15s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+}
+
+
+@keyframes titleAccent {
+
+    from {
+
+        width: 0;
+
+    }
+
+    to {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   OUTLINE TITLE
+   ========================================================= */
+
+.home-title-outline {
+
+    display: block;
+
+    margin-left:
+        clamp(
+            18px,
+            4vw,
+            75px
+        );
+
+    color: transparent;
+
+    font-size:
+        clamp(
+            2.8rem,
+            6.7vw,
+            6.5rem
+        );
+
+    -webkit-text-stroke:
+        1px
+        rgba(255,255,255,0.55);
+
+    text-shadow: none;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.home-description {
+
+    max-width: 570px;
+
+    margin:
+        34px 0 0;
+
+    color:
+        #b8b8b8;
+
+    font-family:
+        var(--rr-body-font);
+
+    font-size:
+        clamp(
+            1rem,
+            1.5vw,
+            1.18rem
+        );
+
+    font-weight: 500;
+
+    line-height: 1.65;
+
+    letter-spacing: 0.025em;
+
+    opacity: 0;
+
+    animation:
+        homeFadeUp
+        0.8s
+        0.65s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.home-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 34px;
+
+    opacity: 0;
+
+    animation:
+        homeFadeUp
+        0.8s
+        0.8s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+}
+
+
+/* =========================================================
+   BUTTON BASE
+   ========================================================= */
+
+.home-btn {
+
+    position: relative;
+
+    min-height: 53px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    padding:
+        0 21px;
+
+    border-radius: 3px;
+
+    text-decoration: none;
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size: 0.57rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.11em;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* =========================================================
+   PRIMARY
+   ========================================================= */
+
+.home-btn-primary {
+
+    color:
+        #ffffff;
+
+    background:
+        var(--rr-red);
+
+    border:
+        1px solid
+        var(--rr-red-bright);
+
+    box-shadow:
+
+        0 0 10px
+        rgba(225,6,19,0.45),
+
+        0 0 25px
+        rgba(225,6,19,0.15);
+
+}
+
+
+.home-btn-primary::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -40%;
+
+    left: -130%;
+
+    width: 60%;
+
+    height: 180%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.6),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation:
+        homeButtonShine
+        3.5s
+        ease-in-out
+        infinite;
+
+    z-index: -1;
+
+}
+
+
+@keyframes homeButtonShine {
+
+    0% {
+
+        left: -130%;
+
+    }
+
+    35% {
+
+        left: 150%;
+
+    }
+
+    100% {
+
+        left: 150%;
+
+    }
+
+}
+
+
+/* =========================================================
+   WHATSAPP BUTTON
+   ========================================================= */
+
+.home-btn-whatsapp {
+
+    color:
+        #dddddd;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+}
+
+
+/* =========================================================
+   OUTLINE BUTTON
+   ========================================================= */
+
+.home-btn-outline {
+
+    color:
+        #999999;
+
+    background:
+        transparent;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+}
+
+
+/* =========================================================
+   BUTTON ARROW
+   ========================================================= */
+
+.home-btn-arrow {
+
+    color:
+        #ffffff;
+
+    font-size:
+        0.95rem;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
+
+.home-btn:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+.home-btn-primary:hover {
+
+    background:
+        var(--rr-red-bright);
+
+    box-shadow:
+
+        0 0 10px
+        rgba(255,23,36,0.9),
+
+        0 0 28px
+        rgba(255,23,36,0.55),
+
+        0 12px 35px
+        rgba(225,6,19,0.25);
+
+}
+
+
+.home-btn-whatsapp:hover {
+
+    color:
+        #ffffff;
+
+    border-color:
+        rgba(255,255,255,0.35);
+
+    background:
+        rgba(255,255,255,0.08);
+
+}
+
+
+.home-btn-outline:hover {
+
+    color:
+        #ffffff;
+
+    border-color:
+        rgba(255,23,36,0.7);
+
+    background:
+        rgba(225,6,19,0.08);
+
+}
+
+
+.home-btn:hover .home-btn-arrow {
+
+    transform:
+        translate(3px,-3px);
+
+}
+
+
+.home-btn-outline:hover .home-btn-arrow {
+
+    transform:
+        translateY(3px);
+
+}
+
+
+/* =========================================================
+   SERVICE STRIP
+   ========================================================= */
+
+.home-services {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 13px;
+
+    margin-top: 28px;
+
+    color:
+        #666666;
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size:
+        0.48rem;
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.15em;
+
+    opacity: 0;
+
+    animation:
+        homeFadeUp
+        0.8s
+        0.95s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+}
+
+
+.home-services i {
+
+    display: block;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        var(--rr-red);
+
+    box-shadow:
+        0 0 7px
+        rgba(225,6,19,0.8);
+
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
+
+.home-side {
+
+    position: relative;
+
+    width: 230px;
+
+    min-width: 230px;
+
+    height: 450px;
+
+    z-index: 10;
+
+    opacity: 0;
+
+    animation:
+        homeSideReveal
+        1s
+        1s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+
+}
+
+
+/* =========================================================
+   VERTICAL TEXT
+   ========================================================= */
+
+.home-side-vertical {
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    writing-mode:
+        vertical-rl;
+
+    transform:
+        rotate(180deg);
+
+    color:
+        rgba(255,255,255,0.25);
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size:
+        0.5rem;
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.28em;
+
+}
+
+
+/* =========================================================
+   CIRCLE
+   ========================================================= */
+
+.home-side-circle {
+
+    position: absolute;
+
+    top: 60px;
+
+    left: 5px;
+
+    width: 165px;
+
+    height: 165px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    background:
+        rgba(5,5,5,0.35);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+}
+
+
+/* =========================================================
+   CIRCLE ORBIT
+   ========================================================= */
+
+.home-side-circle::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -8px;
+
+    border-radius: 50%;
+
+    padding: 1px;
+
+    background:
+
+        conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            transparent 25deg,
+            var(--rr-red-bright) 55deg,
+            transparent 90deg,
+            transparent 360deg
+        );
+
+    -webkit-mask:
+
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask-composite: exclude;
+
+    animation:
+        homeCircleOrbit
+        3s
+        linear
+        infinite;
+
+}
+
+
+@keyframes homeCircleOrbit {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   CIRCLE INNER
+   ========================================================= */
+
+.home-side-circle-inner {
+
+    width: 112px;
+
+    height: 112px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,23,36,0.35);
+
+    box-shadow:
+
+        inset 0 0 30px
+        rgba(225,6,19,0.08),
+
+        0 0 30px
+        rgba(225,6,19,0.08);
+
+}
+
+
+.home-side-circle-inner span {
+
+    color:
+        rgba(255,255,255,0.82);
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size:
+        1.5rem;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.05em;
+
+}
+
+
+/* =========================================================
+   SIDE INFO
+   ========================================================= */
+
+.home-side-info {
+
+    position: absolute;
+
+    left: 5px;
+
+    bottom: 5px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+}
+
+
+.home-side-label {
+
+    color:
+        var(--rr-red-bright);
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size:
+        0.52rem;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        0.18em;
+
+}
+
+
+.home-side-line {
+
+    width: 70px;
+
+    height: 1px;
+
+    background:
+        rgba(255,255,255,0.22);
+
+}
+
+
+.home-side-location {
+
+    color:
+        #777777;
+
+    font-family:
+        var(--rr-body-font);
+
+    font-size:
+        0.65rem;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.25;
+
+    letter-spacing:
+        0.13em;
+
+}
+
+
+/* =========================================================
+   BOTTOM BAR
+   ========================================================= */
+
+.home-bottom {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 27px;
+
+    width: 100%;
+
+    padding:
+        0 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 30;
+
+}
+
+
+/* =========================================================
+   BOTTOM LEFT
+   ========================================================= */
+
+.home-bottom-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color:
+        #666666;
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size:
+        0.45rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.14em;
+
+}
+
+
+.home-status-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        #20d66b;
+
+    box-shadow:
+        0 0 8px
+        rgba(32,214,107,0.8);
+
+    animation:
+        homeStatusPulse
+        1.6s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* =========================================================
+   SCROLL
+   ========================================================= */
+
+.home-scroll {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color:
+        #666666;
+
+    text-decoration: none;
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size:
+        0.45rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.16em;
+
+}
+
+
+.home-scroll-line {
+
+    position: relative;
+
+    width: 45px;
+
+    height: 1px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,0.15);
+
+}
+
+
+.home-scroll-line::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -100%;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        var(--rr-red-bright);
+
+    animation:
+        homeScrollLine
+        2s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes homeScrollLine {
+
+    0% {
+
+        left: -100%;
+
+    }
+
+    50% {
+
+        left: 100%;
+
+    }
+
+    100% {
+
+        left: 100%;
+
+    }
+
+}
+
+
+.home-scroll-arrow {
+
+    color:
+        var(--rr-red-bright);
+
+    font-size:
+        0.85rem;
+
+    animation:
+        homeScrollArrow
+        1.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes homeScrollArrow {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(5px);
+
+    }
+
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT
+   ========================================================= */
+
+.home-bottom-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color:
+        #555555;
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size:
+        0.45rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.13em;
+
+}
+
+
+/* =========================================================
+   CORNER DECORATIONS
+   ========================================================= */
+
+.home-corner {
+
+    position: absolute;
+
+    width: 65px;
+
+    height: 65px;
+
+    z-index: 25;
+
+    pointer-events: none;
+
+}
+
+
+.home-corner-top {
+
+    top: 112px;
+
+    right: 40px;
+
+    border-top:
+        1px solid
+        rgba(255,23,36,0.45);
+
+    border-right:
+        1px solid
+        rgba(255,23,36,0.45);
+
+}
+
+
+.home-corner-bottom {
+
+    bottom: 90px;
+
+    left: 40px;
+
+    border-left:
+        1px solid
+        rgba(255,23,36,0.35);
+
+    border-bottom:
+        1px solid
+        rgba(255,23,36,0.35);
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes homeFadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes homeTitleReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(45px);
+
+        filter:
+            blur(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+
+@keyframes homeSideReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(35px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(0);
+
+    }
+
+}
+
+
+@keyframes homeStatusPulse {
+
+    0%,
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        opacity: 0.45;
+
+        transform:
+            scale(0.75);
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1150px) {
+
+    .home-container {
+
+        width:
+            calc(100% - 50px);
+
+        gap: 40px;
+
+    }
+
+
+    .home-side {
+
+        width: 190px;
+
+        min-width: 190px;
+
+    }
+
+
+    .home-side-circle {
+
+        width: 145px;
+
+        height: 145px;
+
+    }
+
+
+    .home-side-circle-inner {
+
+        width: 98px;
+
+        height: 98px;
+
+    }
+
+
+    .home-bottom {
+
+        padding:
+            0 25px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .home {
+
+        min-height: 760px;
+
+    }
+
+
+    .home-container {
+
+        width:
+            calc(100% - 32px);
+
+        min-height: 760px;
+
+        padding:
+            145px 0 115px;
+
+    }
+
+
+    .home-side {
+
+        display: none;
+
+    }
+
+
+    .home-background-image {
+
+        object-position:
+            65% center;
+
+    }
+
+
+    .home-background-overlay {
+
+        background:
+
+            linear-gradient(
+                90deg,
+                rgba(5,5,5,0.96) 0%,
+                rgba(5,5,5,0.78) 60%,
+                rgba(5,5,5,0.72) 100%
+            ),
+
+            linear-gradient(
+                180deg,
+                rgba(5,5,5,0.35),
+                rgba(5,5,5,0.92)
+            );
+
+    }
+
+
+    .home-red-glow {
+
+        width: 450px;
+
+        height: 450px;
+
+        right: -260px;
+
+    }
+
+
+    .home-corner-top {
+
+        top: 100px;
+
+        right: 18px;
+
+    }
+
+
+    .home-corner-bottom {
+
+        left: 18px;
+
+        bottom: 75px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .home {
+
+        min-height: 720px;
+
+    }
+
+
+    .home-container {
+
+        width:
+            calc(100% - 24px);
+
+        min-height: 720px;
+
+        padding:
+            125px 0 105px;
+
+    }
+
+
+    .home-eyebrow {
+
+        margin-bottom: 22px;
+
+        font-size:
+            0.48rem;
+
+        letter-spacing:
+            0.12em;
+
+        gap: 8px;
+
+    }
+
+
+    .home-eyebrow-divider {
+
+        width: 16px;
+
+    }
+
+
+    .home-title {
+
+        line-height:
+            0.89;
+
+    }
+
+
+    .home-title-line {
+
+        font-size:
+            clamp(
+                3.25rem,
+                16vw,
+                5rem
+            );
+
+    }
+
+
+    .home-title-outline {
+
+        margin-left: 12px;
+
+        font-size:
+            clamp(
+                2.55rem,
+                13vw,
+                4.2rem
+            );
+
+        -webkit-text-stroke:
+            0.8px
+            rgba(255,255,255,0.50);
+
+    }
+
+
+    .home-title-red::after {
+
+        bottom: -3px;
+
+    }
+
+
+    .home-description {
+
+        margin-top:
+            27px;
+
+        font-size:
+            0.93rem;
+
+        line-height:
+            1.55;
+
+    }
+
+
+    .home-actions {
+
+        margin-top:
+            27px;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+    }
+
+
+    .home-btn {
+
+        width: 100%;
+
+        min-height: 51px;
+
+    }
+
+
+    .home-services {
+
+        gap: 9px;
+
+        font-size:
+            0.42rem;
+
+        letter-spacing:
+            0.09em;
+
+        line-height:
+            1.5;
+
+    }
+
+
+    .home-bottom {
+
+        bottom: 20px;
+
+        padding:
+            0 14px;
+
+    }
+
+
+    .home-bottom-left {
+
+        font-size:
+            0.40rem;
+
+    }
+
+
+    .home-bottom-right {
+
+        display: none;
+
+    }
+
+
+    .home-scroll {
+
+        position:
+            static;
+
+        transform:
+            none;
+
+        margin-left:
+            auto;
+
+    }
+
+
+    .home-scroll {
+
+        font-size:
+            0.40rem;
+
+    }
+
+
+    .home-scroll-line {
+
+        width:
+            30px;
+
+    }
+
+
+    .home-corner-top {
+
+        top:
+            94px;
+
+        right:
+            10px;
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+    }
+
+
+    .home-corner-bottom {
+
+        left:
+            10px;
+
+        bottom:
+            65px;
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .home-container {
+
+        width:
+            calc(100% - 20px);
+
+        padding-top:
+            115px;
+
+    }
+
+
+    .home-title-line {
+
+        font-size:
+            3rem;
+
+    }
+
+
+    .home-title-outline {
+
+        font-size:
+            2.35rem;
+
+    }
+
+
+    .home-description {
+
+        font-size:
+            0.86rem;
+
+    }
+
+
+    .home-services span:nth-last-child(-n+2),
+    .home-services i:nth-last-child(-n+3) {
+
+        display: none;
+
+    }
+
+
+    .home-scroll span:first-child {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+   ========================================================= */
+
+@media (
+    max-height: 650px
+) and (
+    max-width: 900px
+) {
+
+    .home {
+
+        min-height:
+            650px;
+
+    }
+
+
+    .home-container {
+
+        min-height:
+            650px;
+
+        padding:
+            110px 0 80px;
+
+    }
+
+
+    .home-eyebrow {
+
+        margin-bottom:
+            15px;
+
+    }
+
+
+    .home-description {
+
+        margin-top:
+            18px;
+
+    }
+
+
+    .home-actions {
+
+        margin-top:
+            18px;
+
+    }
+
+
+    .home-services {
+
+        margin-top:
+            15px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .home-background-image,
+    .home-red-glow,
+    .home-scan-line,
+    .home-btn-primary::before,
+    .home-side-circle::before,
+    .home-scroll-line::after,
+    .home-scroll-arrow,
+    .home-status-dot,
+    .home-eyebrow-dot {
+
+        animation: none !important;
+
+    }
+
+
+    .home-eyebrow,
+    .home-title,
+    .home-description,
+    .home-actions,
+    .home-services,
+    .home-side {
+
+        opacity: 1 !important;
+
+        transform: none !important;
+
+        filter: none !important;
+
+    }
+
+}
