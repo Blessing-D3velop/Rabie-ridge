@@ -31,3 +31,400 @@ a,
 button {
     -webkit-tap-highlight-color: transparent;
 }
+
+/* =========================================================
+   RABIE RIDGE INK HOUSE
+   FLOATING WHATSAPP
+   ========================================================= */
+
+.floating-whatsapp {
+
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99999;
+
+    color: #ffffff;
+
+    background:
+        #25D366;
+
+    border:
+        2px solid rgba(255,255,255,0.9);
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 0 0 0 rgba(37,211,102,0.55),
+        0 8px 25px rgba(0,0,0,0.45);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    animation:
+        whatsappFloat 3s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   PULSING OUTER RING
+   ========================================================= */
+
+.floating-whatsapp-ring {
+
+    position: absolute;
+
+    inset: -7px;
+
+    border: 2px solid rgba(37,211,102,0.55);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+        whatsappPulse 2s ease-out infinite;
+
+}
+
+
+/* =========================================================
+   SECOND PULSE
+   ========================================================= */
+
+.floating-whatsapp-ring::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -7px;
+
+    border: 1px solid rgba(37,211,102,0.28);
+
+    border-radius: 50%;
+
+    animation:
+        whatsappPulse 2s ease-out 0.6s infinite;
+
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.floating-whatsapp-icon {
+
+    position: relative;
+
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2;
+
+}
+
+
+.floating-whatsapp-icon svg {
+
+    width: 100%;
+    height: 100%;
+
+    fill: #ffffff;
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   TOOLTIP
+   ========================================================= */
+
+.floating-whatsapp-text {
+
+    position: absolute;
+
+    right: 76px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        translateX(10px);
+
+    padding:
+        9px 13px;
+
+    color: #ffffff;
+
+    background:
+        rgba(5,5,5,0.92);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-right:
+        2px solid #25D366;
+
+    border-radius: 3px;
+
+    white-space: nowrap;
+
+    font-family:
+        var(--rr-display-font);
+
+    font-size:
+        0.52rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.1em;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.4);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+/* =========================================================
+   TOOLTIP ARROW
+   ========================================================= */
+
+.floating-whatsapp-text::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -6px;
+
+    top: 50%;
+
+    width: 10px;
+    height: 10px;
+
+    background:
+        rgba(5,5,5,0.92);
+
+    border-top:
+        1px solid rgba(255,255,255,0.12);
+
+    border-right:
+        1px solid #25D366;
+
+    transform:
+        translateY(-50%)
+        rotate(45deg);
+
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.floating-whatsapp:hover {
+
+    transform:
+        translateY(-6px)
+        scale(1.06);
+
+    box-shadow:
+        0 0 0 6px rgba(37,211,102,0.10),
+        0 0 25px rgba(37,211,102,0.55),
+        0 15px 40px rgba(0,0,0,0.45);
+
+    animation:
+        none;
+
+}
+
+
+.floating-whatsapp:hover
+.floating-whatsapp-text {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(-50%)
+        translateX(0);
+
+}
+
+
+/* =========================================================
+   ACTIVE
+   ========================================================= */
+
+.floating-whatsapp:active {
+
+    transform:
+        scale(0.94);
+
+}
+
+
+/* =========================================================
+   FLOAT
+   ========================================================= */
+
+@keyframes whatsappFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-5px);
+
+    }
+
+}
+
+
+/* =========================================================
+   PULSE
+   ========================================================= */
+
+@keyframes whatsappPulse {
+
+    0% {
+
+        transform:
+            scale(0.85);
+
+        opacity:
+            0.9;
+
+    }
+
+    70% {
+
+        transform:
+            scale(1.35);
+
+        opacity:
+            0;
+
+    }
+
+    100% {
+
+        transform:
+            scale(1.35);
+
+        opacity:
+            0;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .floating-whatsapp {
+
+        right: 18px;
+        bottom: 18px;
+
+        width: 58px;
+        height: 58px;
+
+    }
+
+    .floating-whatsapp-icon {
+
+        width: 27px;
+        height: 27px;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .floating-whatsapp {
+
+        right: 15px;
+        bottom: 15px;
+
+        width: 56px;
+        height: 56px;
+
+    }
+
+    .floating-whatsapp-text {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .floating-whatsapp,
+    .floating-whatsapp-ring,
+    .floating-whatsapp-ring::after {
+
+        animation:
+            none !important;
+
+    }
+
+}
