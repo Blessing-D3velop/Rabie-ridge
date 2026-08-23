@@ -428,3 +428,64 @@ button {
     }
 
 }
+
+.floating-socials {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+
+.float-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.float-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff;
+}
+
+.float-icon:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.float-whatsapp {
+  background: #25d366;
+}
+
+.float-instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.float-facebook {
+  background: #1877f2;
+}
+
+/* Mobile: slightly smaller + tighter to edge */
+@media (max-width: 480px) {
+  .floating-socials {
+    bottom: 16px;
+    right: 14px;
+    gap: 10px;
+  }
+  .float-icon {
+    width: 46px;
+    height: 46px;
+  }
+  .float-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
