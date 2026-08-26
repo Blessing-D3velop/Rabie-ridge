@@ -1,125 +1,73 @@
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-
-    background:
-        #080808;
-
-    color:
-        #ffffff;
-
-    font-family:
-        "Roboto",
-        sans-serif;
-
-    overflow-x:
-        hidden;
-}
-
-img {
-    max-width: 100%;
-}
-
-a,
-button {
-    -webkit-tap-highlight-color: transparent;
-}
-
 /* =========================================================
-   RABIE RIDGE INK HOUSE
-   FLOATING WHATSAPP
+   CONCEPTO INK
+   FLOATING SOCIAL ICONS
+   WHATSAPP • INSTAGRAM • TIKTOK • FACEBOOK
    ========================================================= */
 
-.floating-whatsapp {
-
+.floating-socials {
     position: fixed;
+    right: 22px;
+    bottom: 24px;
 
-    right: 25px;
-    bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 
-    width: 62px;
-    height: 62px;
+    margin: 0;
+    padding: 0;
+
+    z-index: 99999;
+
+    list-style: none;
+}
+
+
+/* =========================================================
+   BASE ICON
+   ========================================================= */
+
+.float-icon {
+    position: relative;
+
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    z-index: 99999;
+    border-radius: 50%;
 
     color: #ffffff;
-
-    background:
-        #25D366;
-
-    border:
-        2px solid rgba(255,255,255,0.9);
-
-    border-radius: 50%;
-
     text-decoration: none;
 
+    background: rgba(10, 10, 10, 0.86);
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
     box-shadow:
-        0 0 0 0 rgba(37,211,102,0.55),
-        0 8px 25px rgba(0,0,0,0.45);
+        0 8px 25px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    overflow: visible;
+
+    isolation: isolate;
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.35s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease;
 
     animation:
-        whatsappFloat 3s ease-in-out infinite;
-
-}
-
-
-/* =========================================================
-   PULSING OUTER RING
-   ========================================================= */
-
-.floating-whatsapp-ring {
-
-    position: absolute;
-
-    inset: -7px;
-
-    border: 2px solid rgba(37,211,102,0.55);
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    animation:
-        whatsappPulse 2s ease-out infinite;
-
-}
-
-
-/* =========================================================
-   SECOND PULSE
-   ========================================================= */
-
-.floating-whatsapp-ring::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -7px;
-
-    border: 1px solid rgba(37,211,102,0.28);
-
-    border-radius: 50%;
-
-    animation:
-        whatsappPulse 2s ease-out 0.6s infinite;
-
+        socialEntrance 0.8s cubic-bezier(.16,1,.3,1) both,
+        socialFloat 4s ease-in-out infinite;
 }
 
 
@@ -127,263 +75,795 @@ button {
    ICON
    ========================================================= */
 
-.floating-whatsapp-icon {
-
+.float-icon i {
     position: relative;
 
-    width: 29px;
-    height: 29px;
+    z-index: 5;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    z-index: 2;
-
-}
-
-
-.floating-whatsapp-icon svg {
-
-    width: 100%;
-    height: 100%;
-
-    fill: #ffffff;
-
-    display: block;
-
-}
-
-
-/* =========================================================
-   TOOLTIP
-   ========================================================= */
-
-.floating-whatsapp-text {
-
-    position: absolute;
-
-    right: 76px;
-
-    top: 50%;
-
-    transform:
-        translateY(-50%)
-        translateX(10px);
-
-    padding:
-        9px 13px;
+    font-size: 21px;
+    line-height: 1;
 
     color: #ffffff;
 
-    background:
-        rgba(5,5,5,0.92);
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    border-right:
-        2px solid #25D366;
-
-    border-radius: 3px;
-
-    white-space: nowrap;
-
-    font-family:
-        var(--rr-display-font);
-
-    font-size:
-        0.52rem;
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        0.1em;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.4);
-
     transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease,
-        transform 0.3s ease;
-
+        transform 0.35s ease,
+        filter 0.35s ease;
 }
 
 
 /* =========================================================
-   TOOLTIP ARROW
+   GLOW RING
    ========================================================= */
 
-.floating-whatsapp-text::after {
-
+.float-icon::before {
     content: "";
 
     position: absolute;
 
-    right: -6px;
+    inset: -5px;
 
-    top: 50%;
+    border-radius: 50%;
 
-    width: 10px;
-    height: 10px;
+    opacity: 0;
 
-    background:
-        rgba(5,5,5,0.92);
+    pointer-events: none;
 
-    border-top:
-        1px solid rgba(255,255,255,0.12);
+    transform: scale(0.82);
 
-    border-right:
-        1px solid #25D366;
-
-    transform:
-        translateY(-50%)
-        rotate(45deg);
-
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
 }
 
 
 /* =========================================================
-   HOVER
+   HOVER BASE
    ========================================================= */
 
-.floating-whatsapp:hover {
-
+.float-icon:hover {
     transform:
         translateY(-6px)
-        scale(1.06);
+        scale(1.09);
 
-    box-shadow:
-        0 0 0 6px rgba(37,211,102,0.10),
-        0 0 25px rgba(37,211,102,0.55),
-        0 15px 40px rgba(0,0,0,0.45);
+    color: #ffffff;
+}
 
-    animation:
-        none;
+.float-icon:hover i {
+    transform: scale(1.12);
+}
 
+.float-icon:active {
+    transform: scale(0.94);
 }
 
 
-.floating-whatsapp:hover
-.floating-whatsapp-text {
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+
+.float-whatsapp {
+    background: #25D366;
+
+    border-color: rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 0 0 0 rgba(37, 211, 102, 0.55),
+        0 8px 25px rgba(0, 0, 0, 0.45);
+
+    animation:
+        socialEntrance 0.8s cubic-bezier(.16,1,.3,1) both,
+        whatsappFloat 3s ease-in-out infinite;
+}
+
+
+/* WhatsApp pulse ring */
+
+.float-whatsapp::before {
+    border: 2px solid rgba(37, 211, 102, 0.55);
 
     opacity: 1;
 
-    visibility: visible;
+    animation:
+        socialPulse 2s ease-out infinite;
+}
 
-    transform:
-        translateY(-50%)
-        translateX(0);
 
+/* Second WhatsApp ring */
+
+.float-whatsapp::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -12px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(37, 211, 102, 0.25);
+
+    pointer-events: none;
+
+    animation:
+        socialPulse 2s ease-out 0.65s infinite;
+}
+
+
+.float-whatsapp:hover {
+    background: #25D366;
+
+    border-color: #ffffff;
+
+    box-shadow:
+        0 0 0 6px rgba(37, 211, 102, 0.10),
+        0 0 30px rgba(37, 211, 102, 0.65),
+        0 15px 40px rgba(0, 0, 0, 0.45);
+
+    animation:
+        none;
 }
 
 
 /* =========================================================
-   ACTIVE
+   INSTAGRAM
    ========================================================= */
 
-.floating-whatsapp:active {
+.float-instagram {
+    background:
+        linear-gradient(
+            135deg,
+            #833AB4 0%,
+            #E1306C 35%,
+            #FD1D1D 58%,
+            #F77737 78%,
+            #FCAF45 100%
+        );
 
-    transform:
-        scale(0.94);
+    background-size: 250% 250%;
 
+    border-color: rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.4),
+        0 0 0 rgba(225, 48, 108, 0);
+
+    animation:
+        socialEntrance 0.8s cubic-bezier(.16,1,.3,1) 0.12s both,
+        instagramFloat 4s ease-in-out infinite,
+        instagramGradient 5s ease infinite;
+}
+
+
+/* Instagram glowing ring */
+
+.float-instagram::before {
+    border: 2px solid rgba(225, 48, 108, 0.65);
+
+    opacity: 0.75;
+
+    animation:
+        instagramPulse 2.8s ease-out infinite;
+}
+
+
+/* Instagram outer rotating glow */
+
+.float-instagram::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -4px;
+
+    border-radius: 50%;
+
+    padding: 2px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #833AB4,
+            #E1306C,
+            #F77737,
+            #FCAF45,
+            #833AB4
+        );
+
+    background-size: 300% 300%;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask-composite: exclude;
+
+    pointer-events: none;
+
+    opacity: 0.9;
+
+    animation:
+        instagramRing 4s linear infinite,
+        instagramGlow 2.5s ease-in-out infinite;
+}
+
+
+.float-instagram:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #833AB4,
+            #E1306C,
+            #F77737
+        );
+
+    border-color: #E1306C;
+
+    box-shadow:
+        0 0 0 5px rgba(225, 48, 108, 0.10),
+        0 0 25px rgba(225, 48, 108, 0.65),
+        0 0 50px rgba(131, 58, 180, 0.35),
+        0 15px 35px rgba(0, 0, 0, 0.45);
+
+    animation:
+        instagramHover 2s ease-in-out infinite;
+}
+
+
+.float-instagram:hover i {
+    filter:
+        drop-shadow(0 0 7px rgba(255,255,255,0.8));
 }
 
 
 /* =========================================================
-   FLOAT
+   TIKTOK
+   ========================================================= */
+
+.float-tiktok {
+    background: #050505;
+
+    border-color: rgba(255, 255, 255, 0.3);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.45),
+        3px 3px 0 rgba(37, 244, 238, 0.18),
+        -3px -3px 0 rgba(254, 44, 85, 0.18);
+
+    animation:
+        socialEntrance 0.8s cubic-bezier(.16,1,.3,1) 0.24s both,
+        tiktokFloat 3.7s ease-in-out infinite;
+}
+
+
+/* TikTok RGB outer ring */
+
+.float-tiktok::before {
+    inset: -5px;
+
+    border:
+
+        2px solid
+        rgba(37, 244, 238, 0.65);
+
+    opacity: 0.8;
+
+    animation:
+        tiktokPulse 2.2s ease-out infinite;
+}
+
+
+/* TikTok RGB spinning glow */
+
+.float-tiktok::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            #25f4ee,
+            transparent 25%,
+            #fe2c55 50%,
+            transparent 75%,
+            #25f4ee 100%
+        );
+
+    -webkit-mask:
+        radial-gradient(
+            farthest-side,
+            transparent calc(100% - 2px),
+            #000 calc(100% - 1px)
+        );
+
+    mask:
+        radial-gradient(
+            farthest-side,
+            transparent calc(100% - 2px),
+            #000 calc(100% - 1px)
+        );
+
+    pointer-events: none;
+
+    opacity: 0.9;
+
+    animation:
+        tiktokRing 2.2s linear infinite;
+}
+
+
+.float-tiktok:hover {
+    background: #000000;
+
+    border-color: #ffffff;
+
+    box-shadow:
+        0 0 0 5px rgba(255,255,255,0.06),
+        0 0 22px rgba(37, 244, 238, 0.65),
+        0 0 40px rgba(254, 44, 85, 0.5),
+        3px 3px 0 rgba(37, 244, 238, 0.75),
+        -3px -3px 0 rgba(254, 44, 85, 0.75);
+
+    animation:
+        tiktokHover 1.5s ease-in-out infinite;
+}
+
+
+.float-tiktok:hover i {
+    filter:
+        drop-shadow(3px 0 0 rgba(37, 244, 238, 0.85))
+        drop-shadow(-3px 0 0 rgba(254, 44, 85, 0.85));
+
+    transform:
+        scale(1.16)
+        rotate(-4deg);
+}
+
+
+/* =========================================================
+   FACEBOOK
+   ========================================================= */
+
+.float-facebook {
+    background: #1877F2;
+
+    border-color: rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 8px 25px rgba(24, 119, 242, 0.25),
+        0 8px 25px rgba(0, 0, 0, 0.35);
+
+    animation:
+        socialEntrance 0.8s cubic-bezier(.16,1,.3,1) 0.36s both,
+        socialFloat 4.2s ease-in-out infinite;
+}
+
+
+.float-facebook::before {
+    border: 2px solid rgba(24, 119, 242, 0.55);
+
+    animation:
+        facebookPulse 3s ease-out infinite;
+}
+
+
+.float-facebook:hover {
+    background: #1877F2;
+
+    border-color: #ffffff;
+
+    box-shadow:
+        0 0 0 5px rgba(24, 119, 242, 0.12),
+        0 0 28px rgba(24, 119, 242, 0.65),
+        0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+.float-facebook:hover i {
+    filter:
+        drop-shadow(0 0 6px rgba(255,255,255,0.7));
+}
+
+
+/* =========================================================
+   ENTRANCE ANIMATION
+   ========================================================= */
+
+@keyframes socialEntrance {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateX(35px)
+            scale(0.65)
+            rotate(15deg);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translateX(-4px)
+            scale(1.04)
+            rotate(-2deg);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+/* =========================================================
+   GENERAL FLOAT
+   ========================================================= */
+
+@keyframes socialFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-5px);
+    }
+}
+
+
+/* =========================================================
+   WHATSAPP FLOAT
    ========================================================= */
 
 @keyframes whatsappFloat {
 
     0%,
     100% {
-
         transform:
             translateY(0);
-
     }
 
     50% {
-
         transform:
-            translateY(-5px);
-
+            translateY(-7px);
     }
-
 }
 
 
 /* =========================================================
-   PULSE
+   WHATSAPP / GENERAL PULSE
    ========================================================= */
 
-@keyframes whatsappPulse {
+@keyframes socialPulse {
 
     0% {
+        transform:
+            scale(0.82);
 
+        opacity:
+            0.85;
+    }
+
+    70% {
+        transform:
+            scale(1.38);
+
+        opacity:
+            0;
+    }
+
+    100% {
+        transform:
+            scale(1.38);
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =========================================================
+   INSTAGRAM FLOAT
+   ========================================================= */
+
+@keyframes instagramFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    25% {
+        transform:
+            translateY(-5px)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            rotate(0deg);
+    }
+
+    75% {
+        transform:
+            translateY(-4px)
+            rotate(2deg);
+    }
+}
+
+
+/* =========================================================
+   INSTAGRAM GRADIENT
+   ========================================================= */
+
+@keyframes instagramGradient {
+
+    0% {
+        background-position:
+            0% 50%;
+    }
+
+    50% {
+        background-position:
+            100% 50%;
+    }
+
+    100% {
+        background-position:
+            0% 50%;
+    }
+}
+
+
+/* =========================================================
+   INSTAGRAM PULSE
+   ========================================================= */
+
+@keyframes instagramPulse {
+
+    0% {
         transform:
             scale(0.85);
 
         opacity:
-            0.9;
-
+            0.65;
     }
 
-    70% {
-
+    60% {
         transform:
-            scale(1.35);
+            scale(1.3);
 
         opacity:
             0;
-
     }
 
     100% {
-
         transform:
-            scale(1.35);
+            scale(1.3);
 
         opacity:
             0;
-
     }
-
 }
 
 
 /* =========================================================
-   TABLET
+   INSTAGRAM ROTATING RING
    ========================================================= */
 
-@media (max-width: 900px) {
+@keyframes instagramRing {
 
-    .floating-whatsapp {
-
-        right: 18px;
-        bottom: 18px;
-
-        width: 58px;
-        height: 58px;
-
+    from {
+        transform:
+            rotate(0deg);
     }
 
-    .floating-whatsapp-icon {
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
 
-        width: 27px;
-        height: 27px;
 
+/* =========================================================
+   INSTAGRAM GLOW
+   ========================================================= */
+
+@keyframes instagramGlow {
+
+    0%,
+    100% {
+        filter:
+            drop-shadow(
+                0 0 2px
+                rgba(225, 48, 108, 0.45)
+            );
     }
 
+    50% {
+        filter:
+            drop-shadow(
+                0 0 9px
+                rgba(225, 48, 108, 0.85)
+            );
+    }
+}
+
+
+/* =========================================================
+   INSTAGRAM HOVER
+   ========================================================= */
+
+@keyframes instagramHover {
+
+    0%,
+    100% {
+        transform:
+            translateY(-6px)
+            scale(1.09)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            scale(1.12)
+            rotate(3deg);
+    }
+}
+
+
+/* =========================================================
+   TIKTOK FLOAT
+   ========================================================= */
+
+@keyframes tiktokFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-7px);
+    }
+}
+
+
+/* =========================================================
+   TIKTOK RGB PULSE
+   ========================================================= */
+
+@keyframes tiktokPulse {
+
+    0% {
+        transform:
+            scale(0.82);
+
+        opacity:
+            0.8;
+    }
+
+    70% {
+        transform:
+            scale(1.4);
+
+        opacity:
+            0;
+    }
+
+    100% {
+        transform:
+            scale(1.4);
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =========================================================
+   TIKTOK ROTATING RGB RING
+   ========================================================= */
+
+@keyframes tiktokRing {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   TIKTOK HOVER
+   ========================================================= */
+
+@keyframes tiktokHover {
+
+    0%,
+    100% {
+        transform:
+            translateY(-6px)
+            scale(1.09)
+            translateX(0);
+    }
+
+    25% {
+        transform:
+            translateY(-7px)
+            scale(1.11)
+            translateX(2px);
+    }
+
+    50% {
+        transform:
+            translateY(-8px)
+            scale(1.13)
+            translateX(-2px);
+    }
+
+    75% {
+        transform:
+            translateY(-7px)
+            scale(1.11)
+            translateX(2px);
+    }
+}
+
+
+/* =========================================================
+   FACEBOOK PULSE
+   ========================================================= */
+
+@keyframes facebookPulse {
+
+    0% {
+        transform:
+            scale(0.85);
+
+        opacity:
+            0.55;
+    }
+
+    65% {
+        transform:
+            scale(1.3);
+
+        opacity:
+            0;
+    }
+
+    100% {
+        transform:
+            scale(1.3);
+
+        opacity:
+            0;
+    }
 }
 
 
@@ -393,20 +873,51 @@ button {
 
 @media (max-width: 600px) {
 
-    .floating-whatsapp {
+    .floating-socials {
+        right: 14px;
+        bottom: 18px;
 
-        right: 15px;
-        bottom: 15px;
-
-        width: 56px;
-        height: 56px;
-
+        gap: 9px;
     }
 
-    .floating-whatsapp-text {
+    .float-icon {
+        width: 46px;
+        height: 46px;
 
-        display: none;
+        min-width: 46px;
+        min-height: 46px;
+    }
 
+    .float-icon i {
+        font-size: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .floating-socials {
+        right: 11px;
+        bottom: 14px;
+
+        gap: 7px;
+    }
+
+    .float-icon {
+        width: 43px;
+        height: 43px;
+
+        min-width: 43px;
+        min-height: 43px;
+    }
+
+    .float-icon i {
+        font-size: 17px;
     }
 
 }
@@ -418,74 +929,17 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
 
-    .floating-whatsapp,
-    .floating-whatsapp-ring,
-    .floating-whatsapp-ring::after {
+    .float-icon,
+    .float-icon::before,
+    .float-icon::after {
 
         animation:
             none !important;
-
     }
 
-}
+    .float-icon {
+        transition:
+            none;
+    }
 
-.floating-socials {
-  position: fixed;
-  bottom: 24px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 999;
-}
-
-.float-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.float-icon svg {
-  width: 26px;
-  height: 26px;
-  fill: #fff;
-}
-
-.float-icon:hover {
-  transform: scale(1.1) translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
-}
-
-.float-whatsapp {
-  background: #25d366;
-}
-
-.float-instagram {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
-
-.float-facebook {
-  background: #1877f2;
-}
-
-/* Mobile: slightly smaller + tighter to edge */
-@media (max-width: 480px) {
-  .floating-socials {
-    bottom: 16px;
-    right: 14px;
-    gap: 10px;
-  }
-  .float-icon {
-    width: 46px;
-    height: 46px;
-  }
-  .float-icon svg {
-    width: 22px;
-    height: 22px;
-  }
 }
