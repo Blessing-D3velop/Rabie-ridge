@@ -1,26 +1,35 @@
 /* =========================================================
    RABIE RIDGE INK HOUSE
-   GALLERY JS
+   GALLERY JS — dynamic image array, no filters/tags
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const filters =
-        document.querySelectorAll(".gallery-filter");
+    /* =====================================================
+       CONFIG — image1.jpeg through image25.jpeg
+       ===================================================== */
 
-    const items =
-        Array.from(
-            document.querySelectorAll(".gallery-item")
-        );
+    const IMAGE_COUNT = 20;
+    const IMAGE_FOLDER = "assets/";
+
+    const images = Array.from(
+        { length: IMAGE_COUNT },
+        (_, i) => `${IMAGE_FOLDER}image${i + 1}.jpeg`
+    );
+
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
+    const grid =
+        document.getElementById("gallery-grid");
 
     const modal =
         document.getElementById("gallery-modal");
 
     const modalImage =
         document.getElementById("gallery-modal-image");
-
-    const modalTitle =
-        document.getElementById("gallery-modal-title");
 
     const modalCount =
         document.getElementById("gallery-modal-count");
@@ -34,64 +43,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextButton =
         document.querySelector(".gallery-modal-next");
 
+    if (!grid || !modal) return;
 
-    let visibleItems = [...items];
 
     let currentIndex = 0;
 
 
     /* =====================================================
-       FILTER
+       BUILD GRID
        ===================================================== */
 
-    filters.forEach(filter => {
+    images.forEach((src, index) => {
 
-        filter.addEventListener("click", () => {
+        const item = document.createElement("button");
 
-            const selected =
-                filter.dataset.filter;
+        item.type = "button";
+        item.className = "gallery-item";
 
+        const img = document.createElement("img");
 
-            filters.forEach(button => {
+        img.src = src;
+        img.alt = `Tattoo work ${index + 1}`;
+        img.loading = "lazy";
 
-                button.classList.remove("active");
+        item.appendChild(img);
 
-            });
-
-
-            filter.classList.add("active");
-
-
-            visibleItems =
-                items.filter(item => {
-
-                    return (
-                        selected === "all" ||
-                        item.dataset.category === selected
-                    );
-
-                });
-
-
-            items.forEach(item => {
-
-                if (visibleItems.includes(item)) {
-
-                    item.classList.remove(
-                        "gallery-hidden"
-                    );
-
-                } else {
-
-                    item.classList.add(
-                        "gallery-hidden"
-                    );
-
-                }
-
-            });
-
+        item.addEventListener("click", () => {
+            openModal(index);
         });
+
+        grid.appendChild(item);
 
     });
 
@@ -102,43 +83,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openModal(index) {
 
-        if (!visibleItems.length) return;
-
+        if (!images.length) return;
 
         currentIndex = index;
 
-
-        const item =
-            visibleItems[currentIndex];
-
-
-        const image =
-            item.dataset.image;
-
-        const title =
-            item.dataset.title;
-
-
-        modalImage.src = image;
-
-        modalImage.alt = title;
-
-        modalTitle.textContent = title;
-
+        modalImage.src = images[currentIndex];
+        modalImage.alt = `Tattoo work ${currentIndex + 1}`;
 
         modalCount.textContent =
-            `${String(currentIndex + 1).padStart(2, "0")} / ${String(visibleItems.length).padStart(2, "0")}`;
-
+            `${String(currentIndex + 1).padStart(2, "0")} / ${String(images.length).padStart(2, "0")}`;
 
         modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
 
-        modal.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-        document.body.style.overflow =
-            "hidden";
+        document.body.style.overflow = "hidden";
 
     }
 
@@ -150,11 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function closeModal() {
 
         modal.classList.remove("active");
-
-        modal.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+        modal.setAttribute("aria-hidden", "true");
 
         document.body.style.overflow = "";
 
@@ -162,119 +116,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       NEXT
+       NEXT / PREVIOUS
        ===================================================== */
 
     function nextImage() {
 
-        currentIndex =
-            (currentIndex + 1) %
-            visibleItems.length;
-
+        currentIndex = (currentIndex + 1) % images.length;
         openModal(currentIndex);
 
     }
-
-
-    /* =====================================================
-       PREVIOUS
-       ===================================================== */
 
     function previousImage() {
 
-        currentIndex =
-            (
-                currentIndex -
-                1 +
-                visibleItems.length
-            ) %
-            visibleItems.length;
-
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
         openModal(currentIndex);
 
     }
-
-
-    /* =====================================================
-       ITEM CLICK
-       ===================================================== */
-
-    items.forEach(item => {
-
-        item.addEventListener("click", () => {
-
-            const index =
-                visibleItems.indexOf(item);
-
-            if (index !== -1) {
-
-                openModal(index);
-
-            }
-
-        });
-
-    });
 
 
     /* =====================================================
        CONTROLS
        ===================================================== */
 
-    closeButton.addEventListener(
-        "click",
-        closeModal
-    );
-
-    nextButton.addEventListener(
-        "click",
-        nextImage
-    );
-
-    previousButton.addEventListener(
-        "click",
-        previousImage
-    );
+    closeButton.addEventListener("click", closeModal);
+    nextButton.addEventListener("click", nextImage);
+    previousButton.addEventListener("click", previousImage);
 
 
     /* =====================================================
        KEYBOARD
        ===================================================== */
 
-    document.addEventListener(
-        "keydown",
-        event => {
+    document.addEventListener("keydown", event => {
 
-            if (
-                !modal.classList.contains("active")
-            ) {
+        if (!modal.classList.contains("active")) return;
 
-                return;
+        if (event.key === "Escape") closeModal();
+        if (event.key === "ArrowRight") nextImage();
+        if (event.key === "ArrowLeft") previousImage();
 
-            }
-
-
-            if (event.key === "Escape") {
-
-                closeModal();
-
-            }
-
-
-            if (event.key === "ArrowRight") {
-
-                nextImage();
-
-            }
-
-
-            if (event.key === "ArrowLeft") {
-
-                previousImage();
-
-            }
-
-        }
-    );
+    });
 
 });

@@ -2041,338 +2041,101 @@
 
     </section>
 
-      <!-- Gallery -->
-      <section class="gallery" id="gallery">
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
 
-          <div class="gallery-background">
-              <div class="gallery-grid-bg"></div>
-              <div class="gallery-red-glow"></div>
-          </div>
+        <div class="gallery-background">
+            <div class="gallery-grid-bg"></div>
+            <div class="gallery-red-glow"></div>
+        </div>
 
 
-          <div class="gallery-container">
-
-              <!-- HEADER -->
+        <div class="gallery-container">
 
-              <div class="gallery-header">
+            <!-- HEADER -->
 
-                  <div class="gallery-eyebrow">
-                      <span>03</span>
-                      <i></i>
-                      <span>OUR WORK</span>
-                  </div>
+            <div class="gallery-header">
 
-                  <h2 class="gallery-title">
-                      THE <span>WORK.</span>
-                  </h2>
+                <div class="gallery-eyebrow">
+                    <span>03</span>
+                    <i></i>
+                    <span>OUR WORK</span>
+                </div>
 
-                  <p class="gallery-intro">
-                      Black &amp; grey, colour, portraits, sleeves,
-                      fine line and piercings — straight from the machine.
-                  </p>
+                <h2 class="gallery-title">
+                    THE <span>WORK.</span>
+                </h2>
 
-              </div>
+                <p class="gallery-intro">
+                    Black &amp; grey, colour, portraits, sleeves,
+                    fine line and piercings — straight from the machine.
+                </p>
 
+            </div>
 
-              <!-- FILTERS -->
 
-              <div class="gallery-filters">
+            <!-- GALLERY (populated dynamically by scripts/gallery.js) -->
 
-                  <button
-                      type="button"
-                      class="gallery-filter active"
-                      data-filter="all"
-                  >
-                      ALL
-                  </button>
+            <div class="gallery-grid" id="gallery-grid"></div>
 
-                  <button
-                      type="button"
-                      class="gallery-filter"
-                      data-filter="blackgrey"
-                  >
-                      BLACK &amp; GREY
-                  </button>
+        </div>
 
 
-                  <button
-                      type="button"
-                      class="gallery-filter"
-                      data-filter="portrait"
-                  >
-                      PORTRAITS
-                  </button>
+        <!-- =====================================================
+            LIGHTBOX
+            ===================================================== -->
 
-                  <button
-                      type="button"
-                      class="gallery-filter"
-                      data-filter="sleeves"
-                  >
-                      SLEEVES
-                  </button>
+        <div
+            class="gallery-modal"
+            id="gallery-modal"
+            aria-hidden="true"
+        >
 
-                  <button
-                      type="button"
-                      class="gallery-filter"
-                      data-filter="fineline"
-                  >
-                      FINE LINE
-                  </button>
+            <button
+                type="button"
+                class="gallery-modal-close"
+                aria-label="Close image"
+            >
+                ×
+            </button>
 
-                  <button
-                      type="button"
-                      class="gallery-filter"
-                      data-filter="piercings"
-                  >
-                      PIERCINGS
-                  </button>
+            <button
+                type="button"
+                class="gallery-modal-prev"
+                aria-label="Previous image"
+            >
+                ←
+            </button>
 
-              </div>
+            <div class="gallery-modal-content">
 
+                <img
+                    src=""
+                    alt=""
+                    id="gallery-modal-image"
+                >
 
-              <!-- GALLERY -->
+                <div class="gallery-modal-info">
 
-              <div class="gallery-grid">
+                    <span id="gallery-modal-count">
+                        01 / 25
+                    </span>
 
+                </div>
 
-                  <!-- BLACK & GREY -->
+            </div>
 
-                  <button
-                      type="button"
-                      class="gallery-item gallery-item-large"
-                      data-category="blackgrey"
-                      data-image="assets/work-blackgrey-DeuL3HKK.jpeg"
-                      data-title="Black & Grey"
-                  >
+            <button
+                type="button"
+                class="gallery-modal-next"
+                aria-label="Next image"
+            >
+                →
+            </button>
 
-                      <img
-                          src="assets/work-blackgrey-DeuL3HKK.jpeg"
-                          alt="Black and grey animal tattoo on a hand"
-                          loading="lazy"
-                      >
-                      
+        </div>
 
-                      <div class="gallery-overlay">
-
-                          <span>01</span>
-
-                          <strong>
-                              BLACK &amp; GREY
-                          </strong>
-
-                          <em>
-                              VIEW ↗
-                          </em>
-
-                      </div>
-
-                  </button>
-
-
-
-
-
-                  <!-- PORTRAIT -->
-
-                  <button
-                      type="button"
-                      class="gallery-item"
-                      data-category="portrait"
-                      data-image="assets/work-portrait-Fxl0901i.jpeg"
-                      data-title="Portrait"
-                  >
-
-                      <img
-                          src="assets/work-portrait-Fxl0901i.jpeg"
-                          alt="Realistic portrait tattoo on an upper arm"
-                          loading="lazy"
-                      >
-
-                      <div class="gallery-overlay">
-
-                          <span>03</span>
-
-                          <strong>
-                              PORTRAIT
-                          </strong>
-
-                          <em>
-                              VIEW ↗
-                          </em>
-
-                      </div>
-
-                  </button>
-
-
-                  <!-- SLEEVE -->
-
-                  <button
-                      type="button"
-                      class="gallery-item gallery-item-tall"
-                      data-category="sleeves"
-                      data-image="assets/work-sleeve-L3FIayxN.jpeg"
-                      data-title="Sleeves"
-                  >
-
-                      <img
-                          src="assets/work-sleeve-L3FIayxN.jpeg"
-                          alt="Ornamental black and grey full sleeve tattoo"
-                          loading="lazy"
-                      >
-
-                      <div class="gallery-overlay">
-
-                          <span>04</span>
-
-                          <strong>
-                              SLEEVES
-                          </strong>
-
-                          <em>
-                              VIEW ↗
-                          </em>
-
-                      </div>
-
-                  </button>
-
-
-                  <!-- FINE LINE -->
-
-                  <button
-                      type="button"
-                      class="gallery-item"
-                      data-category="fineline"
-                      data-image="assets/work-fineline-BCqV8PVy.jpeg"
-                      data-title="Fine Line"
-                  >
-
-                      <img
-                          src="assets/work-fineline-BCqV8PVy.jpeg"
-                          alt="Fine line heartbeat tattoos"
-                          loading="lazy"
-                      >
-
-                      <div class="gallery-overlay">
-
-                          <span>05</span>
-
-                          <strong>
-                              FINE LINE
-                          </strong>
-
-                          <em>
-                              VIEW ↗
-                          </em>
-
-                      </div>
-
-                  </button>
-
-
-
-
-
-                  <!-- BLACKWORK -->
-
-                  <button
-                      type="button"
-                      class="gallery-item"
-                      data-category="blackgrey"
-                      data-image="assets/work-blackwork-Dsk_12Bn.jpeg"
-                      data-title="Blackwork"
-                  >
-
-                      <img
-                          src="assets/work-blackwork-Dsk_12Bn.jpeg"
-                          alt="Geometric mandala blackwork tattoo"
-                          loading="lazy"
-                      >
-
-                      <div class="gallery-overlay">
-
-                          <span>07</span>
-
-                          <strong>
-                              BLACKWORK
-                          </strong>
-
-                          <em>
-                              VIEW ↗
-                          </em>
-
-                      </div>
-
-                  </button>
-
-
-
-
-              </div>
-
-          </div>
-
-
-          <!-- =====================================================
-              LIGHTBOX
-              ===================================================== -->
-
-          <div
-              class="gallery-modal"
-              id="gallery-modal"
-              aria-hidden="true"
-          >
-
-              <button
-                  type="button"
-                  class="gallery-modal-close"
-                  aria-label="Close image"
-              >
-                  ×
-              </button>
-
-              <button
-                  type="button"
-                  class="gallery-modal-prev"
-                  aria-label="Previous image"
-              >
-                  ←
-              </button>
-
-              <div class="gallery-modal-content">
-
-                  <img
-                      src=""
-                      alt=""
-                      id="gallery-modal-image"
-                  >
-
-                  <div class="gallery-modal-info">
-
-                      <span id="gallery-modal-count">
-                          01 / 08
-                      </span>
-
-                      <h3 id="gallery-modal-title">
-                          BLACK &amp; GREY
-                      </h3>
-
-                  </div>
-
-              </div>
-
-              <button
-                  type="button"
-                  class="gallery-modal-next"
-                  aria-label="Next image"
-              >
-                  →
-              </button>
-
-          </div>
-
-      </section>
+    </section>
 
       <!-- Booking -->
       <section class="booking" id="book">

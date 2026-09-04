@@ -1,6 +1,6 @@
 /* =========================================================
    RABIE RIDGE INK HOUSE
-   GALLERY
+   GALLERY — no filters, no tags, dynamic image array
    ========================================================= */
 
 .gallery {
@@ -122,62 +122,6 @@
 
 
 /* =========================================================
-   FILTERS
-   ========================================================= */
-
-.gallery-filters {
-    display: flex;
-    gap: 7px;
-
-    margin-bottom: 25px;
-
-    overflow-x: auto;
-
-    scrollbar-width: none;
-}
-
-.gallery-filters::-webkit-scrollbar {
-    display: none;
-}
-
-.gallery-filter {
-    flex: 0 0 auto;
-
-    padding: 11px 17px;
-
-    color: #666;
-
-    background: transparent;
-
-    border: 1px solid transparent;
-
-    font-family: var(--rr-display-font);
-    font-size: 0.52rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-
-    cursor: pointer;
-
-    transition:
-        color 0.3s ease,
-        background 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.gallery-filter:hover {
-    color: #fff;
-}
-
-.gallery-filter.active {
-    color: #fff;
-
-    background: rgba(225,6,19,0.1);
-
-    border-color: rgba(225,6,19,0.45);
-}
-
-
-/* =========================================================
    GRID
    ========================================================= */
 
@@ -190,6 +134,16 @@
     grid-auto-rows: 280px;
 
     gap: 12px;
+}
+
+/* Light masonry rhythm — purely CSS, works with any image count */
+
+.gallery-grid .gallery-item:nth-child(8n+1) {
+    grid-column: span 2;
+}
+
+.gallery-grid .gallery-item:nth-child(8n+6) {
+    grid-row: span 2;
 }
 
 
@@ -220,14 +174,6 @@
         transform 0.4s ease,
         border-color 0.3s ease,
         box-shadow 0.3s ease;
-}
-
-.gallery-item-large {
-    grid-column: span 2;
-}
-
-.gallery-item-tall {
-    grid-row: span 2;
 }
 
 
@@ -265,80 +211,6 @@
 
 
 /* =========================================================
-   OVERLAY
-   ========================================================= */
-
-.gallery-overlay {
-    position: absolute;
-    inset: 0;
-
-    z-index: 2;
-
-    padding: 18px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent 30%,
-            rgba(0,0,0,0.85)
-        );
-
-    text-align: left;
-}
-
-
-/* Number */
-
-.gallery-overlay span {
-    color: var(--rr-red-bright);
-
-    font-family: var(--rr-display-font);
-    font-size: 0.52rem;
-    font-weight: 800;
-}
-
-
-/* Title */
-
-.gallery-overlay strong {
-    margin-top: 5px;
-
-    color: #fff;
-
-    font-family: var(--rr-display-font);
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-}
-
-
-/* View */
-
-.gallery-overlay em {
-    margin-top: 5px;
-
-    color: #888;
-
-    font-family: var(--rr-display-font);
-    font-size: 0.45rem;
-    font-style: normal;
-    letter-spacing: 0.12em;
-
-    transition:
-        color 0.3s ease;
-}
-
-.gallery-item:hover .gallery-overlay em {
-    color: var(--rr-red-bright);
-}
-
-
-/* =========================================================
    ITEM HOVER
    ========================================================= */
 
@@ -350,15 +222,6 @@
 
     box-shadow:
         0 20px 50px rgba(0,0,0,0.4);
-}
-
-
-/* =========================================================
-   HIDDEN
-   ========================================================= */
-
-.gallery-item.gallery-hidden {
-    display: none;
 }
 
 
@@ -441,43 +304,46 @@
     font-weight: 800;
 }
 
-.gallery-modal-info h3 {
-    margin: 6px 0 0;
-
-    color: #fff;
-
-    font-family: var(--rr-display-font);
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-}
-
 
 /* =========================================================
    MODAL BUTTONS
    ========================================================= */
 
-.gallery-modal-close,
-.gallery-modal-prev,
-.gallery-modal-next {
-    position: absolute;
+.gallery-modal .gallery-modal-close,
+.gallery-modal .gallery-modal-prev,
+.gallery-modal .gallery-modal-next {
+    position: absolute !important;
 
-    z-index: 3;
+    z-index: 10001 !important;
 
-    display: grid;
+    display: grid !important;
     place-items: center;
 
-    color: #fff;
+    margin: 0;
+    padding: 0;
+
+    color: #fff !important;
 
     background:
-        rgba(10,10,10,0.85);
+        rgba(10,10,10,0.85) !important;
 
     border:
-        1px solid rgba(255,255,255,0.15);
+        1px solid rgba(255,255,255,0.25) !important;
+
+    border-radius: 50%;
+
+    opacity: 1 !important;
+    visibility: visible !important;
 
     cursor: pointer;
+    pointer-events: auto !important;
+
+    line-height: 1;
 
     font-family: var(--rr-display-font);
+    font-weight: 800;
+
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
 
     transition:
         background 0.3s ease,
@@ -487,22 +353,22 @@
 .gallery-modal-close:hover,
 .gallery-modal-prev:hover,
 .gallery-modal-next:hover {
-    background: var(--rr-red);
-    border-color: var(--rr-red-bright);
+    background: var(--rr-red) !important;
+    border-color: var(--rr-red-bright) !important;
 }
 
-.gallery-modal-close {
+.gallery-modal .gallery-modal-close {
     top: 25px;
     right: 25px;
 
     width: 48px;
     height: 48px;
 
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
-.gallery-modal-prev,
-.gallery-modal-next {
+.gallery-modal .gallery-modal-prev,
+.gallery-modal .gallery-modal-next {
     top: 50%;
 
     width: 52px;
@@ -510,14 +376,14 @@
 
     transform: translateY(-50%);
 
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
-.gallery-modal-prev {
+.gallery-modal .gallery-modal-prev {
     left: 30px;
 }
 
-.gallery-modal-next {
+.gallery-modal .gallery-modal-next {
     right: 30px;
 }
 
@@ -564,24 +430,8 @@
         gap: 8px;
     }
 
-    .gallery-item-large {
-        grid-column: span 2;
-    }
-
-    .gallery-item-tall {
+    .gallery-grid .gallery-item:nth-child(8n+6) {
         grid-row: span 1;
-    }
-
-    .gallery-overlay {
-        padding: 12px;
-    }
-
-    .gallery-overlay strong {
-        font-size: 0.52rem;
-    }
-
-    .gallery-overlay em {
-        font-size: 0.4rem;
     }
 
     .gallery-modal-prev {
@@ -634,7 +484,6 @@
 
     .gallery-item,
     .gallery-item img,
-    .gallery-filter,
     .gallery-modal {
         transition: none !important;
     }
