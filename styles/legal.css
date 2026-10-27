@@ -1,0 +1,20 @@
+:root{--bg:#050505;--panel:#0d0d0d;--line:rgba(255,255,255,.1);--red:#e10613;--red2:#ff1724;--txt:#b8b8b8;--head:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:'Rajdhani',Arial,sans-serif;font-size:1.1rem;line-height:1.7}
+a{color:var(--red2)}
+.legal-header{border-bottom:1px solid var(--line);background:#080808}
+.legal-header .in{max-width:1000px;margin:auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.legal-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--head);font-family:'Orbitron',sans-serif;font-weight:800;letter-spacing:.08em;font-size:.85rem}
+.legal-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.legal-brand strong{color:var(--red2)}
+.legal-back{font-family:'Orbitron',sans-serif;font-size:.65rem;letter-spacing:.12em;text-decoration:none;border:1px solid var(--red);color:#fff;padding:10px 16px;border-radius:3px}
+.legal-back:hover{background:var(--red)}
+main.legal{max-width:1000px;margin:auto;padding:56px 24px 80px}
+.legal .tag{font-family:'Orbitron',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--red2)}
+.legal h1{font-family:'Orbitron',sans-serif;color:var(--head);font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;margin:10px 0 8px;text-transform:uppercase}
+.legal .updated{color:#777;margin-bottom:36px}
+.legal h2{font-family:'Orbitron',sans-serif;color:var(--head);font-size:1.05rem;letter-spacing:.04em;margin:38px 0 8px;padding-top:22px;border-top:1px solid var(--line)}
+.legal ul{padding-left:22px}
+.legal li{margin:4px 0}
+.legal-footer{border-top:1px solid var(--line);background:#080808;text-align:center;padding:28px 24px;font-size:.95rem;color:#777}
+.legal-footer a{margin:0 10px;text-decoration:none}

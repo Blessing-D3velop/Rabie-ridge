@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://rabie-ridge-tattoos.co.za/sitemap.xml
